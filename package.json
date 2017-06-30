@@ -4,16 +4,17 @@
   "description": "We bring da' thunder!  Make that old website strikingly pleasant once more!",
   "author": "Jonathan Ihm",
   "keywords": [
-	"javascript",
-	"node",
-	"html",
-	"css",
+    "javascript",
+    "node",
+    "html",
+    "css",
     "convert",
     "responsive"
   ],
   "license": "GPL-3.0",
   "dependencies": {
     "bower": "^1.8.0",
+    "cheerio": "^1.0.0-rc.1",
     "phantomjs": "^2.1.7"
   },
   "devDependencies": {
