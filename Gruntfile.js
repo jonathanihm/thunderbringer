@@ -41,6 +41,6 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['clean', 'copy', 'transform']);
   grunt.registerTask('transform', 'Transform every html page using template.html', function() {
 	  var template = fs.readFileSync('template/template.html', 'utf-8');
-	  console.log(x); 
+	  console.log(template); 
   });
 };
