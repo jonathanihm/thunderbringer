@@ -15,6 +15,7 @@
   "dependencies": {
     "bower": "^1.8.0",
     "cheerio": "^1.0.0-rc.1",
+    "mocha": "^3.4.2",
     "phantomjs": "^2.1.7"
   },
   "devDependencies": {
