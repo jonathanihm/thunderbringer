@@ -1,4 +1,5 @@
 var fs = require('fs');
+const cheerio = require('cheerio');
 
 
 module.exports = function(grunt) {
@@ -41,6 +42,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['clean', 'copy', 'transform']);
   grunt.registerTask('transform', 'Transform every html page using template.html', function() {
 	  var template = fs.readFileSync('template/template.html', 'utf-8');
-	  console.log(template); 
+      const $ = cheerio.load(template);
+      console.log($.html());
   });
 };

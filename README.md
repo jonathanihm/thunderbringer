@@ -10,5 +10,6 @@ Clone the repo, enter the directory, install dependencies, and run grunt
 ```shell
 C:\workspace\thunderbringer>npm install -g grunt
 C:\workspace\thunderbringer>npm install
+C:\workspace\thunderbringer>bower install bootstrap
 C:\workspace\thunderbringer>grunt
 ```
