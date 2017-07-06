@@ -8,7 +8,8 @@ Never fear!  Thunderbringer aims to take a clunky old website and make it new ag
 Clone the repo, enter the directory, install dependencies, and run grunt
 
 ```shell
-C:\workspace\thunderbringer>npm install -g grunt
+C:\workspace\thunderbringer>npm install -g grunt mocha
+C:\workspace\thunderbringer>bower install bootstrap
 C:\workspace\thunderbringer>npm install
 C:\workspace\thunderbringer>bower install bootstrap
 C:\workspace\thunderbringer>grunt
