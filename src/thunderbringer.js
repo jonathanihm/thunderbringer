@@ -1,4 +1,3 @@
-
 const $ = require('cheerio');
 
 module.exports = {
@@ -46,7 +45,7 @@ module.exports = {
 	// add classes to inner ul elements and then their parent lis
     processNavContents($nav) {
         let $innerUl = $nav.find('ul ul');
-        $innerUl.each(function(git ad) {
+        $innerUl.each(function() {
         $(this).siblings('a')
                 .addClass('dropdown-toggle')
                 .attr('data-toggle', 'dropdown')
