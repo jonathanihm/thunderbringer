@@ -1,8 +1,8 @@
-const cheerio = require('cheerio');
+
+const $ = require('cheerio');
 
 module.exports = {
 	findNav: function($root, config) {
-	    console.log(config);
 //	    Order of precedence
 //	    1. config file
 //      2. twitter bootstrap navbar class
@@ -21,7 +21,7 @@ module.exports = {
             }
         }
 
-        // standard twitter navbar element
+	      // standard twitter navbar element
         nav = $root.find('nav.navbar');
         tmp = this.results(nav);
         if (tmp !== null) {
@@ -41,7 +41,24 @@ module.exports = {
         if (tmp !== null) {
             return nav;
         }
-
+	},
+	
+	// add classes to inner ul elements and then their parent lis
+    processNavContents($nav) {
+        let $innerUl = $nav.find('ul ul');
+        $innerUl.each(function(git ad) {
+        $(this).siblings('a')
+                .addClass('dropdown-toggle')
+                .attr('data-toggle', 'dropdown')
+                .attr('role', 'button')
+                .attr('aria-haspopup', 'true')
+                .attr('aria-expanded', 'true');
+        $(this)
+                .addClass('dropdown-menu')
+                .closest('li')
+                        .addClass('dropdown');
+        });
+	    return $nav;
 	},
 	
 	findFooter: function($root, config) {
@@ -68,19 +85,18 @@ module.exports = {
         }
         
         // return anything with a class like nav
-        nav = $root.find("[class*=footer], [class~='footer']");
-        tmp = this.results(nav);
+        footer = $root.find("[class*=footer], [class~='footer']");
+        tmp = this.results(footer);
         if (tmp !== null) {
-            return nav;
+            return footer;
         }
 	    
     },
-
-    results: function(nav) {
-        if (nav && nav.length === 1) {
-            return nav;
-        } else {
-            return null;
+	
+    results: function(el) {
+        if (el && el.length === 1) {
+            return el;
         }
-    }
+        return null;
+    },
 };
