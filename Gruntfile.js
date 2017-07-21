@@ -1,6 +1,7 @@
 var fs = require('fs');
+var thunder = require('./src/thunderbringer.js');
+var config = require('./config.js');
 const cheerio = require('cheerio');
-
 
 module.exports = function(grunt) {
 
@@ -41,8 +42,18 @@ module.exports = function(grunt) {
   // Default task(s).
   grunt.registerTask('default', ['clean', 'copy', 'transform']);
   grunt.registerTask('transform', 'Transform every html page using template.html', function() {
-	  var template = fs.readFileSync('template/template.html', 'utf-8');
-      const $ = cheerio.load(template);
-      console.log($.html());
+	  let template = fs.readFileSync('template/template.html', 'utf-8');
+	  let index = fs.readFileSync('test_website/index.html');
+      let $temp = cheerio.load(template);
+      let $index = cheerio.load(index);
+
+      var nav = thunder.findNav($index(":root"), config);
+      nav = thunder.processNavContents(nav);
+      console.log(nav.find("ul:first-child").children());
+      $temp('#bs-navbar ul').append(nav.find("ul:first-child").children());
+      fs.writeFileSync("build/index.html", $temp.html());
+//      console.log($temp.html());
+//      console.log(navContents);
+//      console.log(nav.html());
   });
 };
