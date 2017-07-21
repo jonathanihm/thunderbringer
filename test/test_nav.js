@@ -1,5 +1,6 @@
 var assert = require('assert');
 var cheerio = require('cheerio');
+var config = require('./config.js');
 var fs = require('fs');
 var template = fs.readFileSync('test/nav_tests.html', 'utf-8');
 var thunder = require('../src/thunderbringer.js');
@@ -8,7 +9,7 @@ const $ = cheerio.load(template);
 describe('Navigation', function() {
     describe('Custom Navigation', function() {
 		it("should find navigation element defined from config selector", function() {
-			assert.equal(1, thunder.findNav($('#custom-nav-class')).length);
+			assert.equal(1, thunder.findNav($('#custom-nav-class'), config).length);
 		});
 	});
     describe('Twitter Bootstrap Navigation', function() {
