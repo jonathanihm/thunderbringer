@@ -1,3 +1,4 @@
+
 const $ = require('cheerio');
 
 module.exports = {
@@ -8,7 +9,7 @@ module.exports = {
 //      3. nav element
 //	    4. any element with a class like nav
 
-//	    TODO: support multiple navigation menus
+        // TODO: support multiple navigation menus
 
         /// use custom selector from config first
         if (config && config.defaults) {
@@ -20,20 +21,20 @@ module.exports = {
             }
         }
 
-	    // standard twitter navbar element
+	      // standard twitter navbar element
         nav = $root.find('nav.navbar');
         tmp = this.results(nav);
         if (tmp !== null) {
             return nav;
         }
-        
+
         // other nav element
         nav = $root.find('nav');
         tmp = this.results(nav);
         if (tmp !== null) {
             return nav;
         }
-        
+
         // return anything with a class like nav
         nav = $root.find("[class*=nav], [class~='nav']");
         tmp = this.results(nav);
@@ -91,7 +92,6 @@ module.exports = {
         }
 	    
     },
-
 	
     results: function(el) {
         if (el && el.length === 1) {
